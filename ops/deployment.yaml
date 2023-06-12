@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knote-app
+  labels:
+    app: knote-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: knote-app
+  template:
+    metadata:
+      labels:
+        app: knote-app
+    spec:
+      containers:
+        - name: knote
+          image: snakierboss52/knote-app:0.0.1
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: '1'
+              memory: 1Gi
