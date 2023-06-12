@@ -19,28 +19,28 @@ Este proyecto es un microservicio desarrollado en Spring Boot que ofrece una apl
 ## Estructura del proyecto
 
 El proyecto sigue una estructura de directorios típica de una aplicación Spring Boot:
-.
-├── ops
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── ingress.yaml
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com.jorge.application
-│   │   │       ├── controller
-│   │   │       ├── entity
-│   │   │       ├── dto
-│   │   │       ├── mappers
-│   │   │       ├── repository
-│   │   │       └── service
-│   │   └── resources
-│   │       └── application.properties
-│   └── test
-│       └── java
-│           └── com.jorge.applicationTest
-├── build.gradle
-└── README.md
+
+- `ops`
+    - `deployment.yaml`
+    - `service.yaml`
+    - `ingress.yaml`
+- `src`
+    - `main`
+        - `java`
+            - `com.jorge.application`
+                - `controller`
+                - `entity`
+                - `dto`
+                - `mappers`
+                - `repository`
+                - `service`
+        - `resources`
+            - `application.properties`
+    - `test`
+        - `java`
+            - `com.jorge.applicationTest`
+- `build.gradle`
+- `README.md`
 
 
 ## Configuración y despliegue
