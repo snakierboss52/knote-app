@@ -11,7 +11,8 @@ Este proyecto es un microservicio desarrollado en Spring Boot que ofrece una apl
 
 ## Tecnologías utilizadas
 
-- Java: Lenguaje de programación utilizado para implementar el microservicio.
+- Java-17: Lenguaje de programación utilizado para implementar el microservicio.
+- Gradle-7.2: Gestor de dependencias, plugins y tasks personalizados
 - Spring Boot: Framework de desarrollo de aplicaciones Java que simplifica la configuración y el desarrollo de aplicaciones basadas en Spring.
 - RESTful API: Se utiliza para proporcionar una interfaz de programación de aplicaciones basada en HTTP que sigue los principios de REST.
 - Kubernetes: Plataforma de orquestación de contenedores utilizada para el despliegue y administración de la aplicación en un entorno escalable.
@@ -40,6 +41,8 @@ El proyecto sigue una estructura de directorios típica de una aplicación Sprin
         - `java`
             - `com.jorge.applicationTest`
 - `build.gradle`
+- `Dockerfile`
+- `Jenkinsfile`
 - `README.md`
 
 
@@ -47,7 +50,9 @@ El proyecto sigue una estructura de directorios típica de una aplicación Sprin
 
 Para desplegar el microservicio en un clúster de Kubernetes, sigue los pasos a continuación:
 
-1. Asegúrate de tener un clúster de Kubernetes configurado y accesible desde tu entorno de desarrollo.
-2. Ajusta los archivos YAML de Kubernetes (`deployment.yaml`, `service.yaml`, `ingress.yaml`) según tus necesidades, como el nombre del servicio, los puertos, etc.
-3. Utiliza los comandos de Kubernetes (por ejemplo, `kubectl apply -f deployment.yaml`) para aplicar los archivos YAML y desplegar la aplicación en el clúster.
-4. Verifica que la aplicación se haya desplegado correctamente y está en funcionamiento utilizando comandos como `kubectl get pods`, `kubectl get services`, etc.
+
+1. Utilizar el Jenkinsfile para compilar y crear la imagen y subirla al registry de su preferencia
+2. Asegúrate de tener un clúster de Kubernetes configurado y accesible desde tu entorno de desarrollo.
+3. Ajusta los archivos YAML de Kubernetes (`deployment.yaml`, `service.yaml`, `ingress.yaml`) según tus necesidades, como el nombre del servicio, los puertos, etc.
+4. Utiliza los comandos de Kubernetes (por ejemplo, `kubectl apply -f deployment.yaml`) para aplicar los archivos YAML y desplegar la aplicación en el clúster.
+5. Verifica que la aplicación se haya desplegado correctamente y está en funcionamiento utilizando comandos como `kubectl get pods`, `kubectl get services`, etc.
