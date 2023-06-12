@@ -6,7 +6,7 @@ USER spring:spring
 
 RUN mkdir -p /tmp/logs && chown spring:spring /tmp/logs
 
-COPY --chown=spring ./app/build/libs/jorge*.jar ./jorge.jar
+COPY --chown=spring ./build/libs/jorge*.jar ./jorge.jar
 
 VOLUME /tmp/logs
 
