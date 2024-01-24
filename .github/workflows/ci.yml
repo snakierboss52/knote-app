@@ -11,31 +11,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: bootJar
+      - name: Upload build jar
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jorge-0.0.1.jar
+          path: build/libs/
 
   create-image-x86:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: Download builded jar
+        uses: actions/download-artifact@v4
+        with:
+          name: jorge-0.0.1.jar
+          path: build/libs/
       - name: Build the Docker image
         run: | 
+          pwd
           ls
-          # docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
+          docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
 
   create-image-arm:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
