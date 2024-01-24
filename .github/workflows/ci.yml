@@ -22,8 +22,16 @@ jobs:
         with:
           arguments: bootJar
 
-  create-image:
+  create-image-x86:
     needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
+
+  create-image-arm:
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
