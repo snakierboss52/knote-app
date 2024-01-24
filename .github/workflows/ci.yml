@@ -28,7 +28,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
+        run: | 
+          ls
+          # docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1
 
   create-image-arm:
     needs: [ build ]
