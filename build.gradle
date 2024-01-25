@@ -38,6 +38,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	//implementation 'org.springframework.boot:spring-boot-starter-security:3.0.6'
 	testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+	testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
 }
 
 tasks.named('test') {
