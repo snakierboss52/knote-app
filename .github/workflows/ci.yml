@@ -28,7 +28,7 @@ jobs:
           name: jorge-0.0.1.jar
           path: build/libs/
 
-  create-image-amd64:
+  create-image:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
@@ -50,18 +50,5 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: false
-          tags: knote-app:0.0.1
-
-  create-image-arm:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Download builded jar
-        uses: actions/download-artifact@v4
-        with:
-          name: jorge-0.0.1.jar
-          path: build/libs/
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag snakierboss/knote-app:0.0.1-arm --platform linux/arm64/v8
+          push: true
+          tags: snakierboss/knote-app:0.0.1
