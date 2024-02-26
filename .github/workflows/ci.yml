@@ -38,7 +38,7 @@ jobs:
           arguments: bootJar
       - name: Upload build jar
         uses: actions/upload-artifact@v4
-        if: always()
+        if: success()
         with:
           name: jorge-0.0.1.jar
           path: build/libs/
@@ -75,6 +75,7 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
+          severity: CRITICAL,HIGH
           image-ref: 'docker.io/snakierboss/knote-app:0.0.1'
           format: 'sarif'
           output: 'trivy-results.sarif'
@@ -86,3 +87,12 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'
+
+  report-failure-notification:
+    needs: [security-scan]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: send email notification about failure
+        run: |
+          'echo Workflow failure'
