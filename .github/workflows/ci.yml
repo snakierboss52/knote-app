@@ -95,4 +95,14 @@ jobs:
     steps:
       - name: send email notification about failure
         run: |
-          'echo Workflow failure'
+          echo "something went wrong"
+
+  report-success-notification:
+    needs: [security-scan]
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - name: send email notification about success execution
+        run: |
+          echo "workflow execute succesfully"
+  
